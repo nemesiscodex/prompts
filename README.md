@@ -5,8 +5,6 @@ A collection of custom instructions and prompt templates for Cursor, the AI-powe
 ## Table of Contents
 - [Overview](#overview)
 - [Contents](#contents)
-  - [Rule Creator](#rule-creator-rule-creatormd)
-  - [Cline Memory Bank](#cline-memory-bank-cline-memory-bankmd)
   - [PR Reviewer](#pr-reviewer-pr-reviewermd)
 - [How to Use](#how-to-use)
 - [Contributing](#contributing)
@@ -18,86 +16,49 @@ This repository contains specialized instruction sets that enhance Cursor's AI c
 
 ## Contents
 
-### Rule Creator (`rule-creator.md`)
-
-A system prompt for creating Cursor rules from framework documentation.
-
-**Purpose:**
-- Creates standardized rules (.mdc files) that guide AI to follow framework best practices
-- Ensures code adherence to latest framework patterns and versions
-- Prevents common pitfalls and deprecated usage
-
-**Process:**
-1. Identifies frameworks and versions from project files
-2. Recalls key features and best practices
-3. Identifies potential pitfalls
-4. Creates rules in .mdc format with appropriate settings
-
-**Usage:**
-- Copy into Cursor custom instructions or use as a prompt
-- Request: "Please read the [Framework] docs and create/add rules for the current version"
-- Result: Framework-specific .mdc files for the .cursor/rules/ folder
-
-### Cline Memory Bank (`cline-memory-bank.md`)
-
-A documentation-first approach for AI development with persistent memory.
-
-**Purpose:**
-- Creates an AI assistant (Cline) that maintains perfect documentation
-- Allows continuity despite memory resets between sessions
-- Enforces documentation-driven development
-
-**Memory Bank Structure:**
-- `projectbrief.md` - Core requirements and project scope
-- `productContext.md` - Project purpose and UX goals
-- `systemPatterns.md` - Architecture and design patterns
-- `techContext.md` - Technologies and technical constraints
-- `activeContext.md` - Current focus and recent changes
-- `progress.md` - Current status and known issues
-
-**Key Commands:**
-- "enter plan mode" - Reads memory bank, verifies context, and plans approach
-  - Example: "Help me create a new endpoint to get all users in the API. Please enter plan mode."
-- "enter act mode" - Checks memory bank, updates docs, executes task
-  - Example: "The plan looks good. Please enter act mode."
-- "update memory bank" - Reviews and updates all memory bank files
-
-**Original Source:**
-- [Cline Memory Bank Documentation](https://docs.cline.bot/improving-your-prompting-skills/cline-memory-bank)
-
 ### PR Reviewer (`pr-reviewer.md`)
 
-A structured approach for comprehensive pull request reviews with confidence ratings.
+A structured approach for comprehensive pull request reviews with certainty ratings.
 
 **Purpose:**
 - Provides a systematic process for reviewing pull requests
-- Incorporates confidence ratings (1-10) for each comment
+- Incorporates certainty scores (0-100%) for each comment
 - Includes reasoning behind feedback to improve clarity
 - Assigns a final rating for the overall PR quality
 
+**Setup:**
+1. Create a new [custom mode](https://docs.cursor.com/chat/custom-modes) in Cursor
+2. Name it "PR Reviewer"
+3. Add the custom prompt from `pr-reviewer.md`
+4. Enable MCP servers you want to use (if using a project-managed MCP server, manually enable it before using this mode)
+5. Enable Auto-Run
+6. Save the mode
+
 **Review Process:**
-0. Use available tools (Sequential Thinking MCP, git commands) to gather PR information
-1. Understand the context and goals of the PR
-2. Consider alternative approaches with pros and cons
-3. Identify bugs, edge cases, and code smells
-4. Conduct focused line-by-line review
-5. Evaluate readability and maintainability
-6. Verify testing coverage
-7. Provide constructive feedback
-8. Perform context-specific checks (performance, security, UI)
-9. Assign a final PR rating (1-10)
+0. **Tools Available**: Use git MCP server or git commands to gather PR information (diffs, commit history)
+1. **Understand the Context**: Read the full diff, PR description, and linked issues
+2. **Perform Automated Analysis**: Run static analysis tools (if provided) with certainty scores
+3. **Consider Alternative Approaches**: Evaluate at least three approaches with pros and cons
+4. **Identify Bugs and Weirdness**: Check for logical errors, runtime issues, and code smells
+5. **Conduct a Focused Line-by-Line Review**: Target critical or complex sections
+6. **Evaluate Readability and Maintainability**: Ensure code is clear, organized, and well-documented
+7. **Verify Testing Coverage**: Confirm tests are included and identify missing test cases
+8. **Provide Constructive Feedback**: Compile findings into clear, prioritized comments
+9. **Context-Specific Checks**: Verify performance, security, and UI aspects (if applicable)
+10. **Final Pull Request Rating**: Assign ratings for Code Quality, Testing Coverage, Readability, and Overall Rating (1-10)
 
 **Usage:**
-- Copy into Cursor custom instructions
-- Add the PR (Pull request, diff or commit) as context for the AI
-- Request: "Review the PR" or "Review the PR against <main-branch-name> branch"
-- Result: Structured review with confidence ratings and actionable feedback
+- Use the "PR Reviewer" custom mode
+- (Optional) Add the PR (diff or commit) as context for the AI
+- Request: "Review the PR" or "Review the PR against <main-branch-name> branch" or "Review the PR using <main-branch-name> as base"
+- Result: Structured review with 0-100% certainty scores and actionable feedback
 
 ## How to Use
 
-1. Copy the desired instruction set into Cursor's custom instructions
-2. Follow the specific usage instructions for each rule file
-3. For Cline Memory Bank, create the memory bank folder structure first
+1. Follow the specific setup instructions for each instruction set (e.g., PR Reviewer uses custom modes)
+2. For instruction sets that use custom modes, create a new custom mode in Cursor and add the provided prompt
+3. For instruction sets that use custom instructions, copy the desired instruction set into Cursor's custom instructions
+4. Follow the specific usage instructions for each rule file
 
 ## Contributing
 

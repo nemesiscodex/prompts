@@ -31,6 +31,7 @@ You must follow the steps below to review the PR. Failure to do so will result i
   - Always use the full diff
   - The user will provider the base branch name. Always use the base branch name provided by the user.
   - Read the PR description and linked issues to grasp the purpose and goals (If available).
+  - Pick the most relevant changes, up to 3. (generally one is enough) and create a mermaid sequence diagram to illustrate the changes.
 
 2. **Perform Automated Analysis**
   - Optional step. Only if a lint/static analysis tool is provided by the user.

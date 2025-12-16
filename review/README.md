@@ -2,6 +2,10 @@
 
 A system prompt that provides a structured approach for comprehensive pull request reviews with certainty ratings. Compatible with any AI coding assistant (Cursor, Claude Code, OpenCode, Codex, etc.).
 
+## 🎥 Watch the Video
+
+[![Watch the Video](https://img.youtube.com/vi/lxDpAMaVDeY/0.jpg)](https://youtu.be/lxDpAMaVDeY)
+
 ## Quick Setup (Cursor)
 
 **For project-specific commands:**
